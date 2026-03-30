@@ -30,15 +30,33 @@ function checkScores() {
     exit();
 }
 
-function playRound(target) {
+
+async function playRound(target) {
+    disableButtons();
+
     let computerSelection = '';
     playerSelection = getPlayerSel(target);
     computerSelection = options[Math.floor(Math.random()*options.length)];
+
     chooseWinner(playerSelection, computerSelection);
     updateScore();
-    playAnimate(target, computerSelection);
+
+    await playAnimate(target, computerSelection);
+
     playerSelection = '';
+    enableButtons();
 }
+
+function disableButtons() {
+    document.querySelectorAll(".iconBtn")
+        .forEach(btn => btn.disabled = true);
+}
+
+function enableButtons() {
+    document.querySelectorAll(".iconBtn")
+        .forEach(btn => btn.disabled = false);
+}
+
 
 function updateScore() {
     const pVal = document.querySelector("#pVal");
