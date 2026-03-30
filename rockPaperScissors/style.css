@@ -57,6 +57,11 @@ html {
     background-color: transparent;
 }
 
+.iconBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 #rockIcon {
     background-image: url(".\\assets\\rockIcon.png");
     height: 15vw;
